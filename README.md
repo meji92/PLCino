@@ -93,6 +93,7 @@ PLCino implements the following functions:
     
 ON Timer block. pt = number of seconds. var = number of the timer
       
+- 
     - def toff(input, pt, var):
       
         OFF Timer block
