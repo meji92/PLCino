@@ -85,12 +85,13 @@ PLCino implements the following functions:
 
     - def ton(input, pt, var):
     
+#
             ___var_
      input-|   tON|
            |      |
         pt-|______|
     
-      ON Timer block. pt = number of seconds. var = number of the timer
+ON Timer block. pt = number of seconds. var = number of the timer
       
     - def toff(input, pt, var):
       
@@ -101,16 +102,23 @@ PLCino implements the following functions:
     - def counter(cu, cd, r, pv, var):
 
 #
-    
               ___var_
         input-|   tON|
               |      |
            pt-|______|
       
 
-  
-  Counter block. CU: increment, CD: decrease, R: reset, PV: target, VAR: counter number
+Counter block. CU: increment, CD: decrease, R: reset, PV: target, VAR: counter number
 
+- Comunication:
+
+        - def get():
+        
+            Read the input pins state
+            
+        - def set(pinstring):
+            
+            Write the output pins
 
       
 
