@@ -1,13 +1,3 @@
-# PLCDUINO SIMULATE A SIMPLE PLC WITH A ARDUINO DRIVING DIGITAL (ANALOG NOT YET) INPUTS AND OUTPUTS
-
-
-# NOTES
-# THE NUMBER OF INPUTS AND OUTPUTS MUST BE THE SAME IN THE .PY FILE AND .INO FILE LOAD IN ARDUINO
-# SERIAL FILE (/dev/ttyXXX) MUST BE HAVE PERMISSIONS TO READ AND WRITE
-#
-#
-#
-
 import time
 import serial
 
@@ -276,13 +266,9 @@ def get():
     return ser.readline()
 
 # Write the output pins
-def set(pinstring="1000000000000000000"):
+def set(pinstring):
     # INPUT EXAMPLE >> "1000000000000000000" >> "1" + 18 pins
-    if (pinstring.__len__()==19):
-        ser.write(pinstring)
-        return 1
-    else:
-        return 0
+    ser.write(pinstring)
 
 
 ############################# MAIN PROGRAM ###################################
