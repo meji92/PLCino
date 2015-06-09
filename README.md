@@ -128,7 +128,7 @@ Counter block. CU: increment, CD: decrease, R: reset, PV: target, VAR: counter n
 
 
 
-########### Blinked led example ###################
+# Blinked led example
     #
     #   m0      ___t0__
     # --| |-----|   tON|
@@ -151,8 +151,8 @@ Counter block. CU: increment, CD: decrease, R: reset, PV: target, VAR: counter n
     #
     ####################################################
 
-    # Its the same as --ton(contact(1,marks[0]),1,0)-- but if the contact input is 1 always, you can skip it
     ton(marks[0],1,0)
+    # Its the same as --ton(contact(1,marks[0]),1,0)-- but if the contact input is 1 always, you can skip it
 
     # To do the fork, there are 2 options. This is the first:
     ton(timers[0],1,1)
@@ -174,5 +174,6 @@ Counter block. CU: increment, CD: decrease, R: reset, PV: target, VAR: counter n
 Notes
 - The number of inputs and outputs must be the same in the .py file and .ino file load in arduino
 - Serial file (/dev/ttyXXX) must have permissions to read and write
+- You can edit the serial config in the 3rd line: ser = serial.Serial('/dev/ttyACM0', 9600)
 
 
