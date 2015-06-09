@@ -96,7 +96,7 @@ ON Timer block. pt = number of seconds. var = number of the timer
 - 
     - def toff(input, pt, var):
       
-        OFF Timer block
+         OFF Timer block
         
 - Counters
     
@@ -113,13 +113,13 @@ Counter block. CU: increment, CD: decrease, R: reset, PV: target, VAR: counter n
 
 - Comunication:
 
-        - def get():
+    - def get():
         
-            Read the input pins state
+        Read the input pins state
             
-        - def set(pinstring):
+    - def set(pinstring):
             
-            Write the output pins
+        Write the output pins
 
       
 
