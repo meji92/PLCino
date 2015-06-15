@@ -169,6 +169,7 @@ def contactNeg(input, var, imtc):
             return 0
 
 ############################# LOGIC ###################################
+# Needed because logical not return true or false
 def nott (input):
     if (input == 0):
         return 1
