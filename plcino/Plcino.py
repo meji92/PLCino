@@ -88,17 +88,55 @@ def addCount():
 
 ############################# CONTACTS ###################################
 
-def contact(input, var):
-    if (var == 1):
-        return input
-    else:
-        return 0
+def contact(input, var, imtc):
+    if (imtc == "i")|(imtc == "I"):
+        if (var == 1):
+            return inputs[var]
+        else:
+            return 0
 
-def contactNot(input, var):
-    if (var == 0):
-        return input
-    else:
-        return 0
+    if (imtc == "m")|(imtc == "M"):
+        if (var == 1):
+            return marks[var]
+        else:
+            return 0
+
+    if (imtc == "t")|(imtc == "T"):
+        if (var == 1):
+            return timers[var]
+        else:
+            return 0
+
+    if (imtc == "c")|(imtc == "C"):
+        if (var == 1):
+            return counts[var]
+        else:
+            return 0
+
+def contactNot(input, var, imtc):
+    if (imtc == "i")|(imtc == "I"):
+        if (var == 0):
+            return inputs[var]
+        else:
+            return 0
+
+    if (imtc == "m")|(imtc == "M"):
+        if (var == 0):
+            return marks[var]
+        else:
+            return 0
+
+    if (imtc == "t")|(imtc == "T"):
+        if (var == 0):
+            return timers[var]
+        else:
+            return 0
+
+    if (imtc == "c")|(imtc == "C"):
+        if (var == 0):
+            return counts[var]
+        else:
+            return 0
 
 #Return 1 with a positive flank, 0 in other case. imtc sets the tipe of var value: i(input), m(mark), t(timer), c(counter)
 def contactPos(input, var, imtc):
@@ -321,7 +359,7 @@ while(1): # RUN STATE
     ton(marks[0],1,0)
 
     # To do the fork, there are 2 options. This is the first:
-    ton(timers[0],1,1) # Set the timer with: input = value of timer 0, pt = 1 second, number of this thimer = 1
+    ton(timers[0],1,1) # Set the timer with: input = value of timer 0, pt = 1 second, number of this timer = 1
     coil(timers[0],0,"q") # Set the coil with: input = value of timer 0, number of output/mark = 0, type = output
 
     # And this is the second (this is better if you have more logic before the fork):

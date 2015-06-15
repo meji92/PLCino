@@ -21,13 +21,14 @@ PLCino implements the following functions:
       
 - Contacts:
     
-    - def contact(input, var):                    
+    - def contact(input, var, imtc):
     
       --| |--
       
-      Function contact where var is the variable that activate the contact (input, mark, timer, counter)
+      Function contact where var is the number of the imput, mark, timer or counter that activate the contact.
+      imtc sets the tipe of var value: i(input), m(mark), t(timer), c(counter)
       
-    - def contactNot(input, var):                   
+    - def contactNot(input, var, imtc):
     
       --|/|--
     
@@ -37,7 +38,7 @@ PLCino implements the following functions:
     
       --|P|--
     
-      Return 1 with a positive flank, 0 in other case. imtc sets the tipe of var value: i(input), m(mark), t(timer), c(counter)
+      Return 1 with a positive flank, 0 in other case.
 
     - def contactNeg(input, var, imtc):   
     
