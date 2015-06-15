@@ -175,12 +175,6 @@ def nott (input):
     else:
         return 0
 
-def orr (input1, input2):
-    if (input1 == 1)|(input2 == 1):
-        return 1
-    else:
-        return 0
-
 ############################# COILS ###################################
 #Asign the imput to output or mark value
 def coil(input, var, qm):
