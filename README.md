@@ -53,10 +53,6 @@ PLCino implements the following functions:
       
       Logic NOT
       
-    - def orr (input1, input2):
-      
-      Logic OR 
-      
 - Coils
 
     - def coil(input, var, qm):
