@@ -169,7 +169,8 @@ def contactNeg(input, var, imtc):
             return 0
 
 ############################# LOGIC ###################################
-def nott(input):
+# Needed because logical not return true or false
+def nott (input):
     if (input == 0):
         return 1
     else:
@@ -317,24 +318,23 @@ while(1): # RUN STATE
     ####################################################
 
     # Its the same as --ton(contact(1,marks[0]),1,0)-- but if the contact input is 1 always, you can skip it
-#    ton(marks[0],1,0)
+    ton(marks[0],1,0)
 
     # To do the fork, there are 2 options. This is the first:
-#    ton(timers[0],1,1) # Set the timer with: input = value of timer 0, pt = 1 second, number of this thimer = 1
-#    coil(timers[0],0,"q") # Set the coil with: input = value of timer 0, number of output/mark = 0, type = output
+    ton(timers[0],1,1) # Set the timer with: input = value of timer 0, pt = 1 second, number of this thimer = 1
+    coil(timers[0],0,"q") # Set the coil with: input = value of timer 0, number of output/mark = 0, type = output
 
     # And this is the second (this is better if you have more logic before the fork):
     #aux = timers[0]
     #ton(aux,1,1)
     #coil(aux,0,"q")
 
-#    coilSet(1,0,"m") # Set the mark 0 allwais (input is 1)
-#    coilReset(timers[1],0,"m") # Reset the mark 0 when timer1 = 1
+    coilSet(1,0,"m") # Set the mark 0 allwais (input is 1)
+    coilReset(timers[1],0,"m") # Reset the mark 0 when timer1 = 1
 
     #####################################################
 
-    print contact((1 or 0),1)
-    print"\teee"
+
 
 
 # WRITE THE OUTPUTS ///////////////////////////////////////////////////////////
@@ -344,5 +344,4 @@ while(1): # RUN STATE
     out = "1"+s
     set(out)
     s = ""
-
 
