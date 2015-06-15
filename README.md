@@ -1,6 +1,7 @@
 PLCino simulate a simple PLC with an arduino driving digital (analog not yet) inputs and outputs 
 
 PLCino implements the following functions:
+
 - Set functions:
 
     - def setPLC (nInputs,nOutputs,nMarks,nTimers,nCounts):
