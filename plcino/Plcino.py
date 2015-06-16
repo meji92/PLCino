@@ -93,50 +93,50 @@ def getPLC():
 
 def contact(input, var, imtc):
     if (imtc == "i")|(imtc == "I"):
-        if (var == 1):
+        if (inputs[var] == 1):
             return inputs[var]
         else:
             return 0
 
     if (imtc == "m")|(imtc == "M"):
-        if (var == 1):
+        if (marks[var] == 1):
             return marks[var]
         else:
             return 0
 
     if (imtc == "t")|(imtc == "T"):
-        if (var == 1):
+        if (timers[var] == 1):
             return timers[var]
         else:
             return 0
 
     if (imtc == "c")|(imtc == "C"):
-        if (var == 1):
+        if counts[var] == 1:
             return counts[var]
         else:
             return 0
 
 def contactNot(input, var, imtc):
     if (imtc == "i")|(imtc == "I"):
-        if (var == 0):
+        if (inputs[var] == 0):
             return inputs[var]
         else:
             return 0
 
     if (imtc == "m")|(imtc == "M"):
-        if (var == 0):
+        if (marks[var] == 0):
             return marks[var]
         else:
             return 0
 
     if (imtc == "t")|(imtc == "T"):
-        if (var == 0):
+        if (timers[var] == 0):
             return timers[var]
         else:
             return 0
 
     if (imtc == "c")|(imtc == "C"):
-        if (var == 0):
+        if (counts[var] == 0):
             return counts[var]
         else:
             return 0
