@@ -102,9 +102,13 @@ ON Timer block. pt = number of seconds. var = number of the timer
 
 #
               ___var_
-        input-|   tON|
+           cu-|      |
               |      |
-           pt-|______|
+           cd-|      |
+              |      |
+            r-|      |
+              |      |
+           pv-|______|
       
 
 Counter block. CU: increment, CD: decrease, R: reset, PV: target, VAR: counter number
