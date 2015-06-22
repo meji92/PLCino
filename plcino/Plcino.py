@@ -10,6 +10,7 @@ inputs = []
 inputsPrev = []
 #The array with the outputs
 outputs = []
+outputsPrev = []
 #The array with the marks values
 marks = []
 #Aux array that contain the last mark values
@@ -91,59 +92,71 @@ def getPLC():
 
 ############################# CONTACTS ###################################
 
-def contact(input, var, imtc):
-    if (imtc == "i")|(imtc == "I"):
+def contact(input, var, imtcq):
+    if (imtcq == "i")|(imtcq == "I"):
         if (inputs[var] == 1):
             return inputs[var]
         else:
             return 0
 
-    if (imtc == "m")|(imtc == "M"):
+    if (imtcq == "m")|(imtcq == "M"):
         if (marks[var] == 1):
             return marks[var]
         else:
             return 0
 
-    if (imtc == "t")|(imtc == "T"):
+    if (imtcq == "t")|(imtcq == "T"):
         if (timers[var] == 1):
             return timers[var]
         else:
             return 0
 
-    if (imtc == "c")|(imtc == "C"):
+    if (imtcq == "c")|(imtcq == "C"):
         if counts[var] == 1:
             return counts[var]
         else:
             return 0
 
-def contactNot(input, var, imtc):
-    if (imtc == "i")|(imtc == "I"):
+    if (imtcq == "q")|(imtcq == "Q"):
+        if counts[var] == 1:
+            return outputs[var]
+        else:
+            return 0
+
+def contactNot(input, var, imtcq):
+    if (imtcq == "i")|(imtcq == "I"):
         if (inputs[var] == 0):
             return inputs[var]
         else:
             return 0
 
-    if (imtc == "m")|(imtc == "M"):
+    if (imtcq == "m")|(imtcq == "M"):
         if (marks[var] == 0):
             return marks[var]
         else:
             return 0
 
-    if (imtc == "t")|(imtc == "T"):
+    if (imtcq == "t")|(imtcq == "T"):
         if (timers[var] == 0):
             return timers[var]
         else:
             return 0
 
-    if (imtc == "c")|(imtc == "C"):
+    if (imtcq == "c")|(imtcq == "C"):
         if (counts[var] == 0):
             return counts[var]
         else:
             return 0
 
+    if (imtcq == "q")|(imtcq == "Q"):
+        if counts[var] == 0:
+            return outputs[var]
+        else:
+            return 0
+
 #Return 1 with a positive flank, 0 in other case. imtc sets the tipe of var value: i(input), m(mark), t(timer), c(counter)
-def contactPos(input, var, imtc):
-    if (imtc == "i")|(imtc == "I"):
+def contactPos(input, var, imtcq):
+    if (imtcq == "i")|(imtcq == "I"):
         if (inputs[var] == 1)&(inputsPrev[var] == 0):
             inputsPrev[var] = inputs[var]
             return input
@@ -151,7 +164,7 @@ def contactPos(input, var, imtc):
             inputsPrev[var] = inputs[var]
             return 0
 
-    if (imtc == "m")|(imtc == "M"):
+    if (imtcq == "m")|(imtcq == "M"):
         if (marks[var] == 1)&(marksPrev[var] == 0):
             marksPrev[var] = marks[var]
             return input
@@ -159,7 +172,7 @@ def contactPos(input, var, imtc):
             marksPrev[var] = marks[var]
             return 0
 
-    if (imtc == "t")|(imtc == "T"):
+    if (imtcq == "t")|(imtcq == "T"):
         if (timers[var] == 1)&(timersPrev[var] == 0):
             timersPrev[var] = timers[var]
             return input
@@ -167,7 +180,7 @@ def contactPos(input, var, imtc):
             timersPrev[var] = timers[var]
             return 0
 
-    if (imtc == "c")|(imtc == "C"):
+    if (imtcq == "c")|(imtcq == "C"):
         if (counts[var] == 1)&(countsPrev[var] == 0):
             countsPrev[var] = counts[var]
             return input
@@ -175,9 +188,17 @@ def contactPos(input, var, imtc):
             countsPrev[var] = counts[var]
             return 0
 
+    if (imtcq == "q")|(imtcq == "Q"):
+        if (inputs[var] == 1)&(inputsPrev[var] == 0):
+            inputsPrev[var] = inputs[var]
+            return input
+        else:
+            inputsPrev[var] = inputs[var]
+            return 0
+
 #Return 1 with a negative flank, 0 in other case
-def contactNeg(input, var, imtc):
-    if (imtc == "i")|(imtc == "I"):
+def contactNeg(input, var, imtcq):
+    if (imtcq == "i")|(imtcq == "I"):
         if (inputs[var] == 0)&(inputsPrev[var] == 1):
             inputsPrev[var] = inputs[var]
             return input
@@ -185,7 +206,7 @@ def contactNeg(input, var, imtc):
             inputsPrev[var] = inputs[var]
             return 0
 
-    if (imtc == "m")|(imtc == "M"):
+    if (imtcq == "m")|(imtcq == "M"):
         if (marks[var] == 0)&(marksPrev[var] == 1):
             marksPrev[var] = marks[var]
             return input
@@ -193,7 +214,7 @@ def contactNeg(input, var, imtc):
             marksPrev[var] = marks[var]
             return 0
 
-    if (imtc == "t")|(imtc == "T"):
+    if (imtcq == "t")|(imtcq == "T"):
         if (timers[var] == 0)&(timersPrev[var] == 1):
             timersPrev[var] = timers[var]
             return input
@@ -201,12 +222,20 @@ def contactNeg(input, var, imtc):
             timersPrev[var] = timers[var]
             return 0
 
-    if (imtc == "c")|(imtc == "C"):
+    if (imtcq == "c")|(imtcq == "C"):
         if (counts[var] == 0)&(countsPrev[var] == 1):
             countsPrev[var] = counts[var]
             return input
         else:
             countsPrev[var] = counts[var]
+            return 0
+
+    if (imtcq == "q")|(imtcq == "Q"):
+        if (inputs[var] == 0)&(inputsPrev[var] == 1):
+            inputsPrev[var] = inputs[var]
+            return input
+        else:
+            inputsPrev[var] = inputs[var]
             return 0
 
 ############################# LOGIC ###################################
