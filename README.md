@@ -20,28 +20,32 @@ PLCino implements the following functions:
     
       Add a new counter and return the position in the array of counters
       
+    - def setInputs(newInputs):
+    
+        Set the inputs like the given in newInputs with this structure: ";0,1;2,0;3,1;" where ;Number of input, value; Number of input, value; ......
+      
 - Contacts:
     
-    - def contact(input, var, imtc):
+    - def contact(input, var, imtcq):
     
       --| |--
       
       Function contact where var is the number of the imput, mark, timer or counter that activate the contact.
-      imtc sets the tipe of var value: i(input), m(mark), t(timer), c(counter)
+      imtcq sets the tipe of var value: i(input), m(mark), t(timer), c(counter), q(input)
       
-    - def contactNot(input, var, imtc):
+    - def contactNot(input, var, imtcq):
     
       --|/|--
     
       Normaly closed contact
     
-    - def contactPos(input, var, imtc):   
+    - def contactPos(input, var, imtcq):   
     
       --|P|--
     
       Return 1 with a positive flank, 0 in other case.
 
-    - def contactNeg(input, var, imtc):   
+    - def contactNeg(input, var, imtcq):   
     
       --|N|--      
     
