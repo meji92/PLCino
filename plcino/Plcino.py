@@ -10,6 +10,7 @@ inputs = []
 inputsPrev = []
 #The array with the outputs
 outputs = []
+#Auxiliary array with previous outputs
 outputsPrev = []
 #The array with the marks values
 marks = []
@@ -90,8 +91,18 @@ def addCount():
 def getPLC():
     return OutputPins,InputPins
 
-############################# CONTACTS ###################################
+#Set the inputs like the given in newInputs with this structure: ;0,1;2,0;3,1; where ;Number of input, value; Number of input, value; ......
+def setInputs(newInputs):
+    global inputs
+    while (newInputs.__len__()>1):
+        aux = newInputs[newInputs.find(';')+1:newInputs.find(',')]
+        newInputs = newInputs [newInputs.find(','):newInputs.__len__()]
+        aux2 = newInputs[newInputs.find(',')+1:newInputs.find(';')]
+        newInputs = newInputs [newInputs.find(';'):newInputs.__len__()]
+        inputs[int(aux)]=int(aux2)
 
+############################# CONTACTS ###################################
+# Contact. imtcq sets the tipe of var value: i(input), m(mark), t(timer), c(counter), q(input)
 def contact(input, var, imtcq):
     if (imtcq == "i")|(imtcq == "I"):
         if (inputs[var] == 1):
@@ -154,7 +165,7 @@ def contactNot(input, var, imtcq):
         else:
             return 0
 
-#Return 1 with a positive flank, 0 in other case. imtc sets the tipe of var value: i(input), m(mark), t(timer), c(counter)
+#Return 1 with a positive flank, 0 in other case. 
 def contactPos(input, var, imtcq):
     if (imtcq == "i")|(imtcq == "I"):
         if (inputs[var] == 1)&(inputsPrev[var] == 0):
