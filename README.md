@@ -158,24 +158,24 @@ Counter block. CU: increment, CD: decrease, R: reset, PV: target, VAR: counter n
     #
     ####################################################
 
-    # Its the same as --ton(contact(1,marks[0]),1,0)-- but if the contact input is 1 always, you can skip it
-    ton(marks[0],1,0)
+    # Starts the timer 0 with mark 0
+    ton(contact(1,0,"m"),1,0)
 
     # To do the fork, there are 2 options. This is the first:
     # Set the timer with: input = value of timer 0, pt = 1 second, number of this thimer = 1
-    ton(timers[0],1,1) 
+    ton(contact(1,0,"t"),1,1) 
     # Set the coil with: input = value of timer 0, number of output/mark = 0, type = output
-    coil(timers[0],0,"q")
+    coil(contact(1,0,"t"),0,"q")
 
     # And this is the second (this is better if you have more logic before the fork):
-    # aux = timers[0]
+    # aux = contact(1,0,"t")
     # ton(aux,1,1)
     # coil(aux,0,"q")
 
-    # Set the mark 0 allwais (input is 1)
+    # Set the mark with 0 always (input is 1)
     coilSet(1,0,"m") 
     # Reset the mark 0 when timer1 = 1
-    coilReset(timers[1],0,"m") 
+    coilReset(contact(1,1,"t"),0,"m") 
 
 
 
